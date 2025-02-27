@@ -1,3 +1,7 @@
+# Ignore all CSV files in the data folder
+data/*.csv
+
+# Keep other files (like database files or config files)
 database/*.db
 __pycache__/
 config.py
