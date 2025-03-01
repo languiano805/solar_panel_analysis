@@ -1,21 +1,21 @@
 # solar_panel_analysis
  analysis of power generation and weather senors to allow for better performance
 
-##Background and Overview
+## Background and Overview
 
-##Project Goals
+## Project Goals
 
-##Data Structure Overview
+## Data Structure Overview
 
-##Executive Summary
+## Executive Summary
 
-##Insights Deep Dive
+## Insights Deep Dive
 
-##Recommendations
+## Recommendations
 
-##Technical Details
+## Technical Details
 
-##Caveats and Assumptions
+## Caveats and Assumptions
 
 
 
