@@ -6,10 +6,10 @@ As part of our ongoing efforts to optimize renewable energy output, our team con
 
 ### Data Collection & Structure:
 
-    Power Generation Data:
-    Data is collected at the inverter level, where each inverter monitors multiple strings of solar panels. This granular approach allows us to assess the performance of individual inverters and identify any discrepancies or areas for maintenance.
+####Power Generation Data:
+    Data is collected at the inverter level, where each inverter monitors multiple strings of solar panels. This granular approach allows us to assess the performance of individual inverters and identify any discrepancies or areas for maintenance.  
 
-    Weather Sensor Data:
+####Weather Sensor Data:
     Weather measurements are captured at the plant level via a single, strategically placed array of sensors. This setup provides an overview of environmental conditions impacting the entire solar farm, ensuring that our energy generation forecasts account for real-time weather variations.
 
 By integrating these datasets, we can develop robust models to predict future power output, identify efficiency trends, and ultimately enhance our operational strategies.
