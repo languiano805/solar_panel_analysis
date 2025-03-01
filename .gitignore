@@ -5,3 +5,7 @@ data/*.csv
 database/*.db
 __pycache__/
 config.py
+
+#Ignore Jupyter Notebook files in notebooks folder as well as checkpoint files
+notebooks/*.ipynb
+
