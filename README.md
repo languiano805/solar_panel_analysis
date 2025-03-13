@@ -35,9 +35,11 @@ Analysis aims to achieve the following objectives:
 ## Insights Deep Dive
 ### 2. Optimize Maintenance Scheduling
 ![Heatmap of correlation between weather variables and power generation](notebooks/output2/weekly_data_correlation_heatmap.png)
+![Heatmap of correlation between weather variables and power generation after removal of week 24](notebooks/output2/weekly_data_correlation_heatmap2.png)
 ![daily yield of all inverters for plant 1](notebooks/output2/daily_yield_over_time.png)
-![Heatmap of correlation between weather variables and power generation after removal of week 24](notebooks/output2/weekly_data_correlation_heatmap.png)
 ![daily yield of all inverters for plant 1 removed week 24](notebooks/output2/daily_yield_over_time2.png)
+![weekly module temperature](notebooks/output2/module_temperature_over_time.png)
+![weekly module temperature removed week 24](notebooks/output2/module_temperature_over_time2.png)
 
 ### 3. Indentifying Faulty or Underperforming Panels
  - Plant 1 consists of 22 inverters, with 3 underperforming relative to the standard deviation of the plant’s average daily yield. These inverters are generating approximately 3% less energy than expected, resulting in a daily yield reduction of 274.7 kWh. Over a month, this could lead to a total energy loss of ~8,241 kWh, significantly impacting overall plant efficiency and potential revenue.
