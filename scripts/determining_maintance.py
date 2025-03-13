@@ -2,7 +2,7 @@ from pathlib import Path
 from sqlalchemy import create_engine
 import mysql.connector
 import matplotlib.pyplot as plt
-
+import seaborn as sns
 
 import pandas as pd
 from config import DB_CONFIG  # import credentials from config.py
@@ -32,20 +32,20 @@ SELECT
 FROM power_output p
 JOIN weather_sensors w
     USING(plant_id, date_time)
-WHERE p.plant_id  = '4136001'
+WHERE p.plant_id  = '4135001'
 """
 df = pd.read_sql(query, conn)
 
 # close the connection
 conn.close()
 
-#convert date_time to dateimte format
+# convert date_time to dateimte format
 df['date_time'] = pd.to_datetime(df['date_time'])
 
-#set date_time as the index
+# set date_time as the index
 df.set_index('date_time', inplace=True)
 
-#group by week ,plant_id, and inverter_id and calculate metrics 
+# group by week ,plant_id, and inverter_id and calculate metrics
 weekly_data = df.resample('W').agg({
     'dc_power': 'mean',
     'ac_power': 'mean',
@@ -56,50 +56,69 @@ weekly_data = df.resample('W').agg({
     'irradiation': 'mean'
 })
 
-#add week column for clarity
+# add week column for clarity start week from 1
 weekly_data['week'] = weekly_data.index.isocalendar().week
 
-#show the processed data
+# show the processed data
 print(weekly_data)
 
-
-# Plot dc_power over time
-plt.figure(figsize=(10, 6))
-plt.plot(weekly_data.index, weekly_data['dc_power'], label='DC Power (Average)', color='blue')
-plt.xlabel('Date')
-plt.ylabel('Average DC Power (kW)')
-plt.title('Weekly Average DC Power Over Time')
-plt.legend()
-plt.grid(True)
-plt.xticks(rotation=45)  # Rotate the x-axis labels for readability
+# create correlation heatmap
+plt.figure(figsize=(12, 8))
+sns.heatmap(weekly_data.corr(), annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Heatmap of Weekly Data')
 plt.tight_layout()
+
+
+# save the png to folder output2
+output_folder = Path('output2')
+output_folder.mkdir(exist_ok=True)
+plt.savefig(output_folder / 'weekly_data_correlation_heatmap.png')
+
 plt.show()
 
-plt.figure(figsize=(10, 6))
-
-# Plot multiple metrics
-plt.plot(weekly_data.index, weekly_data['dc_power'], label='DC Power (Average)', color='blue')
-plt.plot(weekly_data.index, weekly_data['ac_power'], label='AC Power (Average)', color='orange')
-plt.plot(weekly_data.index, weekly_data['daily_yield'], label='Daily Yield (Average)', color='green')
-
-# Labels and title
-plt.xlabel('Date')
-plt.ylabel('Power / Yield')
-plt.title('DC Power, AC Power, and Daily Yield Over Time')
-plt.legend()
-plt.grid(True)
+# graph daily yield over time
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=weekly_data, x='week', y='daily_yield', marker='o')
+plt.title('Daily Yield Over Time')
+plt.xlabel('Week')
+plt.ylabel('Daily Yield (kWh)')
 plt.xticks(rotation=45)
 plt.tight_layout()
+
+
+# save png to folder output2
+output_folder = Path('output2')
+output_folder.mkdir(exist_ok=True)
+plt.savefig(output_folder / 'daily_yield_over_time.png')
+
+
 plt.show()
 
-import seaborn as sns
-
-# Calculate the correlation matrix
-corr = weekly_data[['dc_power', 'ac_power', 'daily_yield', 'ambient_temperature', 'module_temperature', 'irradiation']].corr()
-
-# Create the heatmap
-plt.figure(figsize=(8, 6))
-sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f', cbar=True)
-plt.title('Correlation Heatmap of Performance and Weather Metrics')
+# graph module temperature over time
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=weekly_data, x='week', y='module_temperature', marker='o')
+plt.title('Module Temperature Over Time ')
+plt.xlabel('Week')
+plt.ylabel('Module Temperature (°C)')
+plt.xticks(rotation=45)
 plt.tight_layout()
+
+# save png to folder output2
+output_folder = Path('output2')
+output_folder.mkdir(exist_ok=True)
+plt.savefig(output_folder / 'module_temperature_over_time.png')
+
+
+plt.show()
+
+# graph ambient temperature over time
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=weekly_data, x='week', y='ambient_temperature', marker='o')
+plt.title('Ambient Temperature Over Time (week 24 removed)')
+plt.xlabel('Week')
+plt.ylabel('Ambient Temperature (°C)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+
 plt.show()
