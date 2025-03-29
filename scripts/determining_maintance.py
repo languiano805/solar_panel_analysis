@@ -1,5 +1,4 @@
 from pathlib import Path
-from sqlalchemy import create_engine
 import mysql.connector
 import matplotlib.pyplot as plt
 import seaborn as sns

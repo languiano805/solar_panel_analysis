@@ -33,6 +33,23 @@ Analysis aims to achieve the following objectives:
 ![weather data table](images/weather_sensors_table.png)
 
 ## Insights Deep Dive
+### 1. Forecast Future Power Generation
+#### Plant 1
+- the following graph shows the daily yield of all inverters located in plant 1. Many of the inverters were missing days from their data which would cause problems when forcasting data. To overcome this, we decided to use the average daily yield of all inverters to fill in the missing data. This was done by taking the average of all the inverters that were present on that day and using that as a replacement for the missing data. This method was chosen because it would allow us to use all of the data available to us and not just the data from one inverter.
+![Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/daily_yield_plot.png)
+- In determing whether using a average for the daily yield would have been the best approach we created a bar chart to see the variations of average daily yield for all inverters. The bar chart showed that their were about 4 inverters that were producing a lot less energy then the rest, so we decided to remove those inverters from the average. This was done to ensure that the average was not skewed by the outliers and that we were getting a more accurate representation of the daily yield.
+![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/average_daily_yield_plot.png)
+- After the removal of the outliers the remaining inverters fit within the 1 standard deviation of the average daily yield. This was a good sign that the data was not skewed and that we were getting a more accurate representation of the daily yield.
+![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/filtered_average_daily_yield_plot.png)
+- We then graphed the total yield of the average daily yield of all inverters over time. This was done to see if there were any trends in the data and to see if the average daily yield was increasing or decreasing over time. The graph showed that the average daily yield was increasing over time, which was a good sign that the panels were performing well and that the data was accurate.
+![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/total_yield_plot.png)
+- We then used the total yield of the average daily yield of all inverters over time to create a predictive model for the next 14 days. This was done using prohet, a forecasting tool that uses time series data to make predictions. The model was trained on the total yield of the average daily yield of all inverters over time and was able to predict the next 14 days with a high degree of accuracy.
+![Forcast of Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/forecast_plot.png)
+
+- The model showed a difference between real and predicted value of about 0.00004%. 
+- The forcasted power generation for the next 14 days is about 106,504 kWh. 
+
+
 ### 2. Optimize Maintenance Scheduling
 #### Plant 1
 To optimize maintenance scheduling, we analyzed the correlation between weather variables and power generation. Initially, the heatmap revealed a weak correlation between daily yield and all other variables, suggesting potential issues with data collection.
@@ -42,6 +59,7 @@ Upon further investigation, we identified an anomaly in week 24, where daily yie
 After removal, the correlation between daily yield and module temperature increased from 0.27 to 0.71, indicating a significant improvement in data reliability. Given this anomaly, a detailed investigation into Plant 1’s inverters is necessary to determine its cause.
 
 Additionally, module temperature can serve as a key indicator for determining cleaning schedules. Since it should closely align with ambient temperature, deviations may suggest dust accumulation or other factors affecting efficiency. Implementing this insight could improve long-term performance and maintenance planning.
+
 ![Heatmap of correlation between weather variables and power generation](notebooks/output2/weekly_data_correlation_heatmap.png)
 ![Heatmap of correlation between weather variables and power generation after removal of week 24](notebooks/output2/weekly_data_correlation_heatmap2.png)
 ![daily yield of all inverters for plant 1](notebooks/output2/daily_yield_over_time.png)
