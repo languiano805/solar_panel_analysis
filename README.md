@@ -36,15 +36,15 @@ Analysis aims to achieve the following objectives:
 ### 1. Forecast Future Power Generation
 #### Plant 1
 - the following graph shows the daily yield of all inverters located in plant 1. Many of the inverters were missing days from their data which would cause problems when forcasting data. To overcome this, we decided to use the average daily yield of all inverters to fill in the missing data. This was done by taking the average of all the inverters that were present on that day and using that as a replacement for the missing data. This method was chosen because it would allow us to use all of the data available to us and not just the data from one inverter.
-![Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/daily_yield_plot.png)
+![Daily Yield of Inverters Plant 1](notebooks/output_plant1pg/daily_yield_plot.png)
 - In determing whether using a average for the daily yield would have been the best approach we created a bar chart to see the variations of average daily yield for all inverters. The bar chart showed that their were about 4 inverters that were producing a lot less energy then the rest, so we decided to remove those inverters from the average. This was done to ensure that the average was not skewed by the outliers and that we were getting a more accurate representation of the daily yield.
-![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/average_daily_yield_plot.png)
+![Average Daily Yield of Inverters Plant 1](notebooks/output_plant1pg/average_daily_yield_plot.png)
 - After the removal of the outliers the remaining inverters fit within the 1 standard deviation of the average daily yield. This was a good sign that the data was not skewed and that we were getting a more accurate representation of the daily yield.
-![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/filtered_average_daily_yield_plot.png)
+![Average Daily Yield of Inverters Plant 1](notebooks/output_plant1pg/filtered_average_daily_yield_plot.png)
 - We then graphed the total yield of the average daily yield of all inverters over time. This was done to see if there were any trends in the data and to see if the average daily yield was increasing or decreasing over time. The graph showed that the average daily yield was increasing over time, which was a good sign that the panels were performing well and that the data was accurate.
-![Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/total_yield_plot.png)
+![Average Daily Yield of Inverters Plant 1](notebooks/output_plant1pg/total_yield_plot.png)
 - We then used the total yield of the average daily yield of all inverters over time to create a predictive model for the next 14 days. This was done using prohet, a forecasting tool that uses time series data to make predictions. The model was trained on the total yield of the average daily yield of all inverters over time and was able to predict the next 14 days with a high degree of accuracy.
-![Forcast of Average Daily Yield of Inverters Plant 1](solar_panel_analysis/notebooks/output_plant1pg/forecast_plot.png)
+![Forcast of Average Daily Yield of Inverters Plant 1](notebooks/output_plant1pg/forecast_plot.png)
 
 - The model showed a difference between real and predicted value of about 0.00004%. 
 - The forcasted power generation for the next 14 days is about 106,504 kWh. 
