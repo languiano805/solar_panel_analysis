@@ -125,7 +125,7 @@ Furthermore, DC and AC power can serve as key indicators for determining cleanin
    - Regularly review and update predictive models to ensure they remain accurate and relevant as conditions change.
    - Explore advanced machine learning techniques for more robust forecasting and anomaly detection in power generation data.
 ## Future Work
-1. **Data Quality Improvement**: 
+**Data Quality Improvement**: 
    - Implement more robust data collection methods to minimize missing or inconsistent data points.
    - Explore the use of additional sensors or data sources to enhance the accuracy of weather variable correlations with power generation.
 
