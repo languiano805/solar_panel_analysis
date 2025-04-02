@@ -49,6 +49,16 @@ Analysis aims to achieve the following objectives:
 - The model showed a difference between real and predicted value of about 0.00004%. 
 - The forcasted power generation for the next 14 days is about 106,504 kWh. 
 
+#### Plant 2
+- When determineing the consistency of Daily Yield of Inverters within plant 2 we found that their was much more variation in the data. Believing that this would cause a problem with the data, the processed was uncontinued using the sum of the Total Yield to determine whether a more accurate model could be created.
+- But first a bar graph was used to determine whether any of the data could be removed. Findings showed that their were many more outliers than in plant 1. This was a problem that would cause more more of the data to be skewed.
+![Daily Yield of Inverters Plant 2](notebooks/output_plant2pg/daily_yield_plot.png)
+![Average Daily Yield of Inverters Plant 2](notebooks/output_plant2pg/average_daily_yield_plot.png)
+- Using the cummilation of all total yields from interperters this data was much more linear and did not have as many outliers. This would allow for a more accurate model to be created.
+![Total Yield of Inverters Plant 2](notebooks/output_plant2pg/total_yield_plot.png)
+- The forcast however showed much more variation in the predictions. Further investiagtion into the outliers will be conducted to determine if they are faulty panels or if they are just not producing as much energy as the rest of the panels.
+![Forcast of Average Daily Yield of Inverters Plant 2](notebooks/output_plant2pg/forecast_plot.png)
+
 
 ### 2. Optimize Maintenance Scheduling
 #### Plant 1
